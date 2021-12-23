@@ -1,0 +1,55 @@
+-- criando usuário
+create user zorddie identified by "curso@2021";
+
+-- apagando usuário
+drop user zorddie;
+
+
+-- adicionando privilégios
+grant connect to zorddie;
+grant create session to zorddie;
+grant alter session to zorddie;
+grant select any table to zorddie;
+grant create any table to zorddie;
+grant create any procedure to zorddie;
+grant create any view to zorddie;
+grant create any trigger to zorddie;
+
+-- criando grupos de liberação de acesso nivel 1
+create role nivel_1;
+grant select any table to nivel_1;
+grant connect to nivel_1;
+grant alter session to nivel_1;
+grant create session to nivel_1;
+grant create any procedure to nivel_1;
+
+-- atribuindo a role ao usuário
+grant nivel_1 to lapplace;
+alter user lapplace default role nivel_1;
+grant nivel_2 to leoniddas;
+alter user leoniddas default role nivel_2;
+grant nivel_3 to zorddie;
+alter user zorddie default role nivel_3;
+
+-- criando grupos de liberação de acesso nivel 2
+create role nivel_2;
+grant nivel_1 to nivel_2;
+grant insert any table to nivel_2;
+grant update any table to nivel_2;
+grant delete any table to nivel_2;
+grant select any sequence to nivel_2;
+
+-- criando grupos de liberação de acesso nivel 3
+create role nivel_3;
+grant nivel_2 to nivel_3;
+grant create any table to nivel_3;
+grant create any trigger to nivel_3;
+grant create any view to nivel_3;
+grant create any procedure to nivel_3;
+grant create any sequence to nivel_3;
+grant drop any table to nivel_3;
+grant drop any trigger to nivel_3;
+grant drop any view to nivel_3;
+
+-- removendo privilégios 
+revoke nivel_3 from zorddie;
