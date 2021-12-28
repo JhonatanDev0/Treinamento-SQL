@@ -1,0 +1,33 @@
+-- Colocando constraint
+-- UF --
+alter table uf add constraint nr_seq_uf_pk primary key (nr_sequencia);
+alter table uf add constraint sg_uf_un unique (sg_uf);
+alter table uf add constraint cd_uf_ibge_un unique(cd_uf_ibge);
+
+-- Municipio --
+alter table municipio add constraint nr_seq_municipio_pk primary key (nr_sequencia);
+alter table municipio add constraint cd_municipio_ibge_un unique(cd_municipio_ibge);
+alter table municipio modify (cd_municipio_ibge not null);
+
+-- PF --
+alter table pessoa_fisica add constraint nr_seq_pf_pk primary key (nr_sequencia);
+alter table pessoa_fisica add constraint pessoa_fisica_cpf_un unique(nr_cpf);
+
+-- PF Endereço --
+alter table pessoa_fisica_endereco add constraint nr_seq_end_pf_pk primary key (nr_sequencia);
+alter table pessoa_fisica_endereco add constraint nr_seq_end_pf_fk foreign key (nr_seq_pessoa_fisica)references pessoa_fisica(nr_sequencia);
+alter table pessoa_fisica_endereco add constraint nr_seq_uf_end_fk foreign key (nr_seq_uf) references uf(nr_sequencia);
+alter table pessoa_fisica_endereco add constraint nr_seq_municipio_end_fk foreign key (nr_seq_municipio) references municipio(nr_sequencia);
+alter table pessoa_fisica_endereco modify (nr_seq_pessoa_fisica not null);
+
+-- Deixando not null a constraint
+alter table uf modify (sg_uf not null, cd_uf_ibge not null);
+
+-- Apagando constraint
+alter table uf drop constraint sg_uf_un;
+
+-- Desafio: Adicionar uma coluna chamada Sexo do tipo varchar2(1) na tabela pessoa_fisica
+-- Desafio 2: Criar uma constraint Sexo_ck que receba apenas as letras (F M I)
+
+alter table pessoa_fisica add (sexo varchar2(1));
+alter table pessoa_fisica add constraint sexo_ck check(sexo in('F','M','I'));
