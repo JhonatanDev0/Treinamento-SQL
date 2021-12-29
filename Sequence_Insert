@@ -1,0 +1,77 @@
+-- Criando Sequence -- 
+create sequence pessoa_fisica_seq
+    start with 1
+    increment by 1
+    maxvalue 9999999
+    minvalue 1
+    nocache
+    cycle;
+    
+create sequence uf_seq
+    start with 1
+    increment by 1
+    maxvalue 9999999
+    minvalue 1
+    nocache
+    cycle;
+
+-- Insert --
+insert into uf(nr_sequencia,dt_criacao,cd_uf_ibge,sg_uf,ds_uf)
+values(uf_seq.nextval,sysdate, 12, 'SC', 'Santa Catarina');
+
+-- Exemplo de outro Insert --
+declare
+cd_uf_w number(2);
+begin
+insert into uf(nr_sequencia,dt_criacao,cd_uf_ibge,sg_uf,ds_uf)
+values(uf_seq.nextval,sysdate, 12, 'SC', 'Santa Catarina')
+return nr_sequencia into cd_uf_w
+end;
+
+insert into uf(nr_sequencia,dt_criacao,cd_uf_ibge,sg_uf,ds_uf)
+select uf_seq.nextval,sysdate, 15, 'AP', 'Teste'
+from dual
+
+-- Apagando os dados --
+delete uf
+commit
+
+-- Script dos dados UF --
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 12,    'AC', 'Acre');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 27,    'AL', 'Alagoas');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 16,    'AP', 'Amapá');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 13,    'AM', 'Amazonas');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 29,    'BA', 'Bahia');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 23,    'CE', 'Ceará');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 53,    'DF', 'Distrito Federal');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 32,    'ES', 'Espírito Santo');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 52,    'GO', 'Goiás');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 21,    'MA', 'Maranhão');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 51,    'MT', 'Mato Grosso');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 50,    'MS', 'Mato Grosso do Sul');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 31,    'MG', 'Minas Gerais');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 15,    'PA', 'Pará');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 25,    'PB', 'Paraíba');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 41,    'PR', 'Paraná');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 26,    'PE', 'Pernambuco');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 22,    'PI', 'Piauí');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 33,    'RJ', 'Rio de Janeiro');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 24,    'RN', 'Rio Grande do Norte');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 43,    'RS', 'Rio Grande do Sul');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 11,    'RO', 'Rondônia');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 14,    'RR', 'Roraima');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 42,    'SC', 'Santa Catarina');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 35,    'SP', 'São Paulo');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 28,    'SE', 'Sergipe');
+insert into uf(nr_sequencia, dt_criacao, cd_uf_ibge, sg_uf, ds_uf)values(uf_seq.nextval, sysdate, 17,    'TO',  'Tocantins');
+
+-- Consultando -- 
+select * from uf;
+
+select * from municipio;
+
+-- Alterando table --
+alter table municipio add(cd_uf_ibge number(2));
+alter table municipio add constraint municipio_uf_ibge_fk foreign key(cd_uf_ibge)references uf(cd_uf_ibge);
+
+
