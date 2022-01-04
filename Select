@@ -1,0 +1,9 @@
+select a.nr_sequencia "sequencia",
+       a.dt_criacao "dado criado",
+       a.cd_municipio_ibge "código municipio ibge",
+       a.ds_municipio "descrição municipio",
+       a.cd_uf_ibge "código UF ibge"
+from municipio a
+where cd_uf_ibge in(24,52)
+and (ds_municipio like '%An%'
+or ds_municipio like '%São%')
